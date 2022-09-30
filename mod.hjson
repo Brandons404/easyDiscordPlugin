@@ -1,0 +1,7 @@
+name: easyDiscordPlugin
+displayName: easyDiscordPlugin
+author: >;;;>Fish
+description: "2 way communication between discord and game chat."
+version: 1.0
+minGameVersion: 136
+hidden: true
