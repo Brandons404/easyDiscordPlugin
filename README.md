@@ -11,7 +11,7 @@ Note: it's recommended that you paste the id into notepad or similar, and copy i
 
 Step 4. In your server console, enter the following command: "setchannel PASTE_YOUR_ID_HERE" and hit enter.
 
-Congradulations. Your server should now be connected. (Most) errors should log to your console. 
+Congratulations. Your server should now be connected. (Most) errors should log to your console. 
 
 ## Notes
 This is slightly experimental. I have no idea the level of traffic my web server will be able to handle but please let me know any issues you come accross either by openening an issue on this reposity or on discord.
