@@ -1,16 +1,18 @@
-# Rock The Vote
-
-A lightweight javascript re-write of the original [RockTheVotePlugin](https://github.com/mayli/RockTheVotePlugin) updated to run on V7 servers.
+# Easy Discord Plugin
 
 ## Installing
 
-Simply download the zip file, pull the folder inside of it out, and put it into your config/mods folder.
-(A server restart is required to update mods/plugins on your server.)
+Step 1. Download the zip file, and put it's contents into your server's "/mods" directory and restart the server.
 
-## Disclaimer
+Step 2. Click [here](https://discord.com/api/oauth2/authorize?client_id=1024825496799826042&permissions=274878630912&scope=bot) to invite the mindustry-chat-bot to your discord server.
 
-I am not claiming ownership of this plugin, original credit goes to [mayli](https://github.com/mayli) who made it first. It doesn't seem like it is being supported anymore and I rely on it for my own server, so I decided to update it myself.
+Step 3. Find the discord channel you want to connect to your server and right click on it, then select "copy id". 
+Note: it's recommended that you paste the id into notepad or similar, and copy it again. sometimes pasting directly into the console will not work correctly)
 
-There were some listed Todo's on the original plugin that I may get to later since I think they would be nice features, or if you want, feel free to create a pull request on this repo.
+Step 4. In your server console, enter the following command: "setchannel PASTE_YOUR_ID_HERE" and hit enter.
 
-Please create a new issue if you find any bugs, I'm happy to try and fix them.
+Congratulations. Your server should now be connected. (Most) errors should log to your console. 
+
+## Notes
+This is slightly experimental. I have no idea the level of traffic my web server will be able to handle but please let me know any issues you come accross either by openening an issue on this repository or on discord.
+
