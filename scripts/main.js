@@ -54,18 +54,18 @@ Events.on(PlayerLeave, (e) => {
 
 Events.on(PlayerChatEvent, (e) => {
   const player = e.player;
-  const text = e.message;
+  let text = e.message;
 
   if (text[0] === '/') return;
 
   const formattedName = Strings.stripColors(player.name);
-  const lastChar1 = formattedMessage[formattedMessage.length - 1];
+  const lastChar1 = text[text.length - 1];
 
   if (lastChar1 >= 0xf80 && lastChar1 <= 0x107f) {
-    formattedMessage = formattedMessage.slice(0, -2);
+    text = text.slice(0, -2);
   }
 
-  const msg = '**' + formattedName + '**' + ': ' + formattedMessage;
+  const msg = '**' + formattedName + '**' + ': ' + text;
 
   sendMessage(msg);
 });
