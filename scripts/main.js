@@ -59,7 +59,6 @@ Events.on(PlayerChatEvent, (e) => {
   if (text[0] === '/') return;
 
   const formattedName = Strings.stripColors(player.name);
-  let formattedMessage = text.slice(0, -2);
   const lastChar1 = formattedMessage[formattedMessage.length - 1];
 
   if (lastChar1 >= 0xf80 && lastChar1 <= 0x107f) {
