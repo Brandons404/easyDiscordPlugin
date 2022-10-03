@@ -14,5 +14,5 @@ Step 4. In your server console, enter the following command: "setchannel PASTE_Y
 Congratulations. Your server should now be connected. (Most) errors should log to your console. 
 
 ## Notes
-This is slightly experimental. I have no idea the level of traffic my web server will be able to handle but please let me know any issues you come accross either by openening an issue on this reposity or on discord.
+This is slightly experimental. I have no idea the level of traffic my web server will be able to handle but please let me know any issues you come accross either by openening an issue on this repository or on discord.
 
