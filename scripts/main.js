@@ -36,6 +36,11 @@ const sendMessage = (msg) => {
   }
 };
 
+Colors.put("accent", Color.white);
+Colors.put("unlaunched", Color.white);
+Colors.put("stat", Color.white);
+Colors.put("highlight", Color.white);
+
 Events.on(PlayerJoin, (e) => {
   const player = e.player;
   const formattedName = Strings.stripColors(player.name);
