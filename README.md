@@ -1,16 +1,15 @@
-# Rock The Vote
+# EasyDiscordPlugin
 
-A lightweight javascript re-write of the original [RockTheVotePlugin](https://github.com/mayli/RockTheVotePlugin) updated to run on V7 servers.
+A lightweight javascript plugin that connects mindustry game chat to discord.
 
 ## Installing
 
 Simply download the zip file, pull the folder inside of it out, and put it into your config/mods folder.
-(A server restart is required to update mods/plugins on your server.)
+(A server restart is required to update mods/plugins on your server.).
 
-## Disclaimer
+Once your server is started, create a discord channel that will be used for game chat, right-click the cahnnel,
+and click "copy ID". Then in your mindustry server console, run `setchannel <channel-id>`, and that's it!
 
-I am not claiming ownership of this plugin, original credit goes to [mayli](https://github.com/mayli) who made it first. It doesn't seem like it is being supported anymore and I rely on it for my own server, so I decided to update it myself.
+Due to security reasons, I will need to whitelist your server's IP address to connect to the web api relay.
+You can contact me on my [discord](https://discord.gg/hwbvHJKn27).
 
-There were some listed Todo's on the original plugin that I may get to later since I think they would be nice features, or if you want, feel free to create a pull request on this repo.
-
-Please create a new issue if you find any bugs, I'm happy to try and fix them.
