@@ -4,6 +4,8 @@ A lightweight javascript plugin that connects mindustry game chat to discord.
 
 ## Installing
 
+[Invite](https://discord.com/api/oauth2/authorize?client_id=1024825496799826042&permissions=68608&scope=bot) the mindustry-discord-bot to your discord server.
+
 Simply download the zip file, pull the folder inside of it out, and put it into your config/mods folder.
 (A server restart is required to update mods/plugins on your server.).
 
