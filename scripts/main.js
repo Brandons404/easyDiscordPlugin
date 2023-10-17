@@ -4,36 +4,32 @@ importPackage(Packages.arc.util);
 // for testing locally
 // const ip = 'localhost';
 const ip = '45.79.202.111';
-
 const discordPrefix = '';
+
 let channelId = '';
 let serverCommands;
+const errorTimeout = 20000;
 
 const sendMessage = (msg) => {
   const postBody = {
     channel: channelId,
     msg: msg,
   };
-
+  
   const stringPostBody = JSON.stringify(postBody);
-
+  
   const req = Http.post(`http://` + ip + `:5000/api/chat`, stringPostBody)
-    .header('Content-Type', 'application/json')
-    .header('Accept', '*/*');
+  .header('Content-Type', 'application/json')
+  .header('Accept', '*/*');
   req.timeout = 10000;
-
-  try {
-    req.submit((response, exception) => {
-      if (exception || !response) {
-        Log.info(
-          '\n\nDiscord bot encountered an error while trying to send a message to discord.\n\n'
-        );
-      }
-      return;
-    });
-  } catch (e) {
-    Log.info('\n\nDiscord bot encountered an error while trying to send a message to discord.\n\n');
-  }
+  let lastErrored = 0;
+  req.error(() => {
+    if(Date.now() - lastErrored > errorTimeout){
+      Log.err("Network error: failed to send discord messages");
+      lastErrored = Date.now();
+    }
+  });
+  req.submit();
 };
 
 const cleanMessage = (message) => {
@@ -140,17 +136,18 @@ Timer.schedule(
       .header('Content-Type', 'application/json')
       .header('Accept', '*/*');
     req.timeout = 10000;
-
-    try {
-      req.submit((response, exception) => {
-        if (exception || !response) return;
-        let messages = response.getResultAsString();
-        messages = JSON.parse(messages).messages;
-        if (messages.length > 0) Call.sendMessage(messages);
-      });
-    } catch (e) {
-      Log.info('\n\nDiscord Bot: There was a problem getting discord messages.\n\n');
-    }
+    let lastErrored = 0;
+    req.error(() => {
+      if(Date.now() - lastErrored > errorTimeout){
+        Log.err("Network error: failed to fetch discord messages");
+        lastErrored = Date.now();
+      }
+    });
+    req.submit((response) => {
+      let responseData = response.getResultAsString();
+      let messages = JSON.parse(responseData).messages;
+      if (messages.length > 0) Call.sendMessage(messages);
+    });
   },
   10,
   3
