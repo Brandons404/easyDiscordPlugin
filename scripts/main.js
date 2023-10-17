@@ -21,19 +21,8 @@ const sendMessage = (msg) => {
     .header('Content-Type', 'application/json')
     .header('Accept', '*/*');
   req.timeout = 10000;
-
-  try {
-    req.submit((response, exception) => {
-      if (exception || !response) {
-        Log.info(
-          '\n\nDiscord bot encountered an error while trying to send a message to discord.\n\n'
-        );
-      }
-      return;
-    });
-  } catch (e) {
-    Log.info('\n\nDiscord bot encountered an error while trying to send a message to discord.\n\n');
-  }
+  req.error(() => Log.err("Network error: failed to send discord messages"));
+  req.submit();
 };
 
 const cleanMessage = (message) => {
@@ -140,17 +129,12 @@ Timer.schedule(
       .header('Content-Type', 'application/json')
       .header('Accept', '*/*');
     req.timeout = 10000;
-
-    try {
-      req.submit((response, exception) => {
-        if (exception || !response) return;
-        let messages = response.getResultAsString();
-        messages = JSON.parse(messages).messages;
-        if (messages.length > 0) Call.sendMessage(messages);
-      });
-    } catch (e) {
-      Log.info('\n\nDiscord Bot: There was a problem getting discord messages.\n\n');
-    }
+    req.error(() => Log.err("Network error: failed to fetch discord messages"));
+    req.submit((response) => {
+      let responseData = response.getResultAsString();
+      let messages = JSON.parse(responseData).messages;
+      if (messages.length > 0) Call.sendMessage(messages);
+    });
   },
   10,
   3
